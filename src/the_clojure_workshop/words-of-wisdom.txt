@@ -1,0 +1,33 @@
+;; ****************************************************************************************************
+;; chapter 13 - Database Interaction and the Application Layer
+
+1. When we talk of a connection pool, we're essentially talking about establishing one or
+more connections ahead of time and making them available to our application anytime
+a database connection is required. In this way, we deal with the connection overhead
+once on application startup and benefit from connection reuse from that point onward
+
+2. jdbc/query
+   jdbc/insert! jdbc/update! jdbc/delete! 
+Also of note is the ! suffix on three of the API calls. This is conventionally (but not
+always!) used to indicate that the function itself will perform a side effect. In the
+functional programming world, this can be deemed important enough to draw extra
+attention to.
+Inserting, updating, and deleting will indeed result in a side effect – that of changing the
+persistent storage in some way. A query, by contrast, is a simple read function and will
+have no effect besides data retrieval.
+
+
+;; ****************************************************************************************************
+;; chapter 14 - HTTP with Ring
+
+1. An important distinction to make between PUT and POST is that PUT should be used
+when updating an existing resource or when we happen to know the unique ID of the
+entity we're creating. POST is used solely for the creation of resources and does not
+require us to know its unique ID. Instead, this ID will be allocated by the web service
+itself and communicated back to the client via the response headers.
+The full set of supported methods are GET, POST, PUT, DELETE, HEAD,
+PATCH, CONNECT, OPTIONS, and TRACE. The first four of which are most
+typically encountered.
+
+2. JSON to EDN conversion leads to a loss of data. This is due to EDN having more built-in type
+support than JSON (for example, sets and keywords)
