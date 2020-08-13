@@ -1,0 +1,32 @@
+(ns reagent-sandbox.core
+    (:require [reagent.core :as reagent :refer [atom]]))
+
+(enable-console-print!)
+
+(println "This text is printed from src/reagent-sandbox/core.cljs. Go ahead and edit it and see reloading in action.")
+
+;; define your app data so that it doesn't get over-written on reload
+
+(defonce app-state (atom {:text "Hello world!"}))
+
+(defn image 
+  [url]
+  [:img {:src url
+         :style {:width "500px"
+                 :border "solid gray 3px"
+                 :border-radius "10px"}}])
+
+(defn hello-world []
+  [:div
+   [:h1 (:text @app-state)]
+   [:div [image "https://picsum.photos/id/0/5616/3744"]]
+   [:h3 "Edit this and watch it change!"]])
+
+(reagent/render-component [hello-world]
+                          (. js/document (getElementById "app")))
+
+(defn on-js-reload []
+  ;; optionally touch your app-state to force rerendering depending on
+  ;; your application
+  ;; (swap! app-state update-in [:__figwheel_counter] inc)
+)

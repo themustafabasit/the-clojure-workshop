@@ -53,3 +53,36 @@ the following:
 body that is represented as an input stream. slurp is ideal in this case as it will open a
 reader on the stream and return the stream contents as a string. slurp also works on
 files, URIs, and URLs.
+
+
+;; ****************************************************************************************************
+;; chapter 15 - The Frontend: A ClojureScript UI
+
+***
+create a new Figwheel project using the following Leiningen command:
+lein new figwheel reagent-sandbox --template-version 0.5.19 -- --reagent
+***
+
+1. A Reagent component is similar to a Hiccup component except that the first element
+can be either a keyword or a function. When it's a keyword, it is a Hiccup component
+and when it's a function, Reagent calls the function in order to render the component
+and passes to the function the remaining parts of the vector. 
+
+2. In Reagent, the state of the application is stored in a ratom (shorthand for reagent/ atom),
+which has the same interface as regular Clojure atoms. The difference between a ratom and a Clojure 
+atom is that when a ratom changes, the UI is rerendered
+
+3. React.js embraces the functional programming approach and encourages the developer
+to build their frontend application from components that manipulate data structures.
+The data structures are rendered by React in the browser's Document Object Model (DOM) in a very efficient way.
+React keeps the developer's mind free from having to deal with the DOM at a low level, enabling them to focus 
+on the business logic.
+Clojure's data-oriented approach, its immutable data structures, and the way it
+manages changes via atoms make React and ClojureScript a powerful combination. 
+
+4. when developing a React application, the developer writes React components that return data structures
+and the React frameworks automatically update the DOM and render the component on the UI.
+
+5. If a complex component's behavior is required by the application, such as doing
+something special as soon as the component is mounted or just before the component
+is updated, React provides lifecycle methods that the component can interact with
