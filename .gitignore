@@ -13,3 +13,4 @@ pom.xml.asc
 .calva/
 derby-local/
 derby.log
+npm-debug.log

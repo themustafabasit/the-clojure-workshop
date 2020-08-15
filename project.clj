@@ -21,7 +21,8 @@
                  [metosin/muuntaja "0.6.7"]
                  [metosin/jsonista "0.2.6"]
                  [clj-http "3.10.1"]
-                 [org.clojure/data.json "1.0.0"]]
+                 [org.clojure/data.json "1.0.0"]
+                 [jumblerg/ring-cors "2.0.0"]]
   :main ^:skip-aot the-clojure-workshop.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})

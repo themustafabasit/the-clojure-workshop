@@ -5,6 +5,7 @@
             [compojure.route :as route]
             [muuntaja.middleware :as middleware]
             [clojure.edn :as edn]
+            [jumblerg.middleware.cors :refer [wrap-cors]]
             [the-clojure-workshop.chapter13-db-interaction.fitness.schema :as schema]
             [the-clojure-workshop.chapter13-db-interaction.fitness.ingestion :as ingest]
             [the-clojure-workshop.chapter13-db-interaction.fitness.query :as query]))
@@ -49,6 +50,9 @@
   []
   (run-jetty (-> routes
                  middleware/wrap-format
-                 params/wrap-params)
+                 params/wrap-params
+                 (wrap-cors ".*")
+                 (wrap-cors identity))
              {:port 8080
               :join? false}))
+
